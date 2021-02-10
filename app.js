@@ -7,7 +7,7 @@ const Schema = mongoose.Schema;
 const costSchema = new Schema ({
     text: String,
     summa: Number
-})
+});
 
 const url = 'mongodb+srv://dbUser:dbUserPass@firstcluster.as11g.mongodb.net/<dbUserDB>?retryWrites=true&w=majority'
 mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
@@ -43,9 +43,9 @@ app.delete('/deleteCost', (req, res) => {
         Cost.find().then(result => {
             res.send({data: result});
         });
-    })
-})
+    });
+});
 
 app.listen(8000, () => {
     console.log('The server is running!!!')
-})
+});
