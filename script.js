@@ -20,7 +20,6 @@ onClickButton = () => {
         text: textI,
         summa: valueI
     });
-    console.log(allCosts)
     valueI = null;
     textI = '';
     inputText.value = '';
