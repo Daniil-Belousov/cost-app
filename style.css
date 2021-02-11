@@ -101,7 +101,7 @@ label {
   cursor: pointer;
 }
 
-wrap-all-summ {
+#wrap-all-summ {
   padding-top: 20px;
   text-align: end;
 }

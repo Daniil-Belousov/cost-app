@@ -29,6 +29,7 @@ onClickButton = () => {
         text: textI,
         summa: valueI
     });
+    total = total + Number(valueI);
     valueI = null;
     textI = '';
     inputText.value = '';
@@ -38,15 +39,18 @@ onClickButton = () => {
 };
 
 render = () => {
-    const amountContainer = document.querySelector('#wrap-all-summ');
-    const amount = document.createElement('span');
-    amount.className = 'summa';
-    amount.innerText = `Итого: ${total} р.`
-    amountContainer.appendChild(amount);
+    // const amountContainer = document.querySelector('#wrap-all-summ');
+    const amount = document.querySelector('.summa');
+    amount.innerText = `Итого: ${total} р.`;
+    // amount.className = 'summa';
+    // amount.innerText = `Итого: ${total} р.`
+    // amountContainer.appendChild(amount);
 
-    while(amountContainer.firstChild) {
-        amountContainer.removeChild(amountContainer.firstChild)
-    }
+    // while(amountContainer.firstChild) {
+    //     amountContainer.removeChild(amountContainer.firstChild)
+    // }
+
+    
 
     
     const content = document.getElementById('wrap-task-container');
@@ -54,7 +58,6 @@ render = () => {
         content.removeChild(content.firstChild);
     } 
     allCosts.map((item,index) => {
-        total = total + allCosts[index].summa;
         const container = document.createElement('div');
         container.id = `cost-${index}`;
         container.className = 'cost-container';
