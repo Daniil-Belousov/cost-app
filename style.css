@@ -56,7 +56,7 @@ body {
 }
 
 .cost-name {
-    margin-top: 5px;
+  margin-top: 5px;
   border: none;
   border-radius: 7px;
   width: 100%;
@@ -67,7 +67,7 @@ body {
 }
 
 .cost-value {
-    margin-top: 5px;
+  margin-top: 5px;
   border: none;
   border-radius: 7px;
   width: 100%;
@@ -81,31 +81,83 @@ body {
   border: none;
   border-radius: 7px;
   width: 5vw;
-  background: crimson;
+  background: navy;
   text-transform: uppercase;
-  color: aqua;
-  font-size: 24px;
+  color: aliceblue;
+  font-size: 20px;
   font-weight: bold;
-  letter-spacing: 3px;
+  letter-spacing: 1px;
+  height: 50px;
+  margin-top: 25px;
 }
 
 label {
-    font-size: 18px;
+  font-size: 18px;
+  padding-left: 2px;
 }
 
 .add-cost:hover {
-    opacity: 0.7;
-    cursor: pointer;
+  opacity: 0.7;
+  cursor: pointer;
 }
 
-.wrap-all-summ {
-    padding-top: 20px;
-    text-align: end;
+wrap-all-summ {
+  padding-top: 20px;
+  text-align: end;
 }
 
 .summa {
-    padding-right: 7vw;
-    font-size: 25px;
-    letter-spacing: 1px;
-    font-weight: 600;
+  padding-right: 7vw;
+  font-size: 25px;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.cost-btn {
+  width: 2vw;
+  cursor: pointer;
+}
+
+.cost-btn:hover {
+  opacity: 0.7;
+}
+
+#wrap-task-container {
+  padding-top: 5vh;
+}
+
+.cost-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 90%;
+  border-top: 2px solid black;
+  padding: 2vh 2vw;
+  margin-top: 1.5vh;
+  align-items: center;
+}
+
+.cost-container:first-child {
+  border: none;
+}
+
+.wrap-text {
+  display: flex;
+    justify-content: space-between;
+    width: 80%;
+    align-items: center;
+}
+
+.cost-cost {
+  font-size: 26px;
+    font-weight: 100;
+    letter-spacing: 0.5px;
+    /* word-wrap: break-word; */
+}
+
+.wrap-buttons {
+  display: flex;
+  width: 10%;
+  justify-content: space-between; 
+  align-items: center; 
 }
