@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Costs App</title>
+  </head>
+  <body>
+    <section class="wrap-container">
+      <div class="container">
+        <div class="wrap-head">
+          <h1 class="headline">Учёт моих расходов</h1>
+        </div>
+        <div class="wrap-add">
+          <div class="cost-name-wrap">
+            <label for="cost-name">Куда было потрачено:</label>
+            <input
+            id="cost-name"
+              name="cost-name"
+              type="text"
+              class="cost-name"
+              placeholder="Куда потратил бабки?!"
+            />
+          </div>
+          <div class="cost-value-wrap">
+            <label for="cost-value">Сколько было потрачено:</label>
+            <input
+            id="cost-value"
+              name="cost-value"
+              type="number"
+              class="cost-value"
+              placeholder="Сколько?! Сколько?!"
+            />
+          </div>
+          <button class="add-cost" onclick="onClickButton()">Add</button>
+        </div>
+        <div class="wrap-all-summ">
+            <span class="summa">Итого: 8000 р.</span>
+        </div>
+
+
+        <div id="wrap-task-container">
+
+        </div>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
