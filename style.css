@@ -146,12 +146,21 @@ label {
   justify-content: space-between;
   width: 80%;
   align-items: center;
+  word-break: break-all;
 }
 
 .cost-cost {
   font-size: 26px;
   font-weight: 100;
   letter-spacing: 0.5px;
+}
+
+.cost-text {
+  width: 70%;
+}
+
+.cost-money {
+  width: 20%;
 }
 
 .wrap-buttons {
