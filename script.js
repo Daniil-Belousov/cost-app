@@ -23,6 +23,7 @@ window.onload = async function init() {
 updateText = (event) => {
   textI = event.target.value;
 };
+
 updateValue = (event) => {
   valueI = event.target.value;
 };
@@ -89,7 +90,7 @@ render = () => {
         wrapText.appendChild(inputEditValue);
     } else {
         const text = document.createElement("p");
-        text.innerText = `${index + 1}) ` + item.text;
+        text.innerText = `${index + 1}) ${item.text}`;
         text.className = "cost-text cost-cost";
         wrapText.appendChild(text);
 
