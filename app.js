@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require('cors');
 const mongoose = require("mongoose");
 const app = express();
 const Schema = mongoose.Schema;
@@ -16,6 +17,7 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
 const Cost = mongoose.model("costs", costSchema);
 
 app.use(bodyParser.json());
+app.use(cors());
 
 app.get("/allCosts", (req, res) => {
   Cost.find().then((result) => {
