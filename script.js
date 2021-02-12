@@ -1,4 +1,4 @@
-let allCosts = JSON.parse(localStorage.getItem('costs')) || [];
+let allCosts = JSON.parse(localStorage.getItem("costs")) || [];
 let textI = "";
 let valueI = null;
 let inputText = null;
@@ -17,7 +17,7 @@ window.onload = async function init() {
 
   // let result = await resp.json();
   render();
-  localStorage.setItem('costs', JSON.stringify(allCosts));
+  localStorage.setItem("costs", JSON.stringify(allCosts));
 };
 
 updateText = (event) => {
@@ -50,8 +50,9 @@ onClickButton = () => {
     textI = "";
     inputText.value = "";
     inputValue.value = null;
+    localStorage.setItem("costs", JSON.stringify(allCosts));
     render();
-    localStorage.setItem('costs', JSON.stringify(allCosts));
+    
   }
 };
 
@@ -72,32 +73,32 @@ render = () => {
     wrapText.className = "wrap-text";
     container.appendChild(wrapText);
 
-    if(index === indexEdit) {
-        const inputEditText = document.createElement('input');
-        inputEditText.type = 'text';
-        inputEditText.value = item.text;
-        inputEditText.className = 'editNow textNow'
-        inputEditText.addEventListener('change', updateCostText);
-        inputEditText.addEventListener('blur', onCLickDone);
-        wrapText.appendChild(inputEditText);
+    if (index === indexEdit) {
+      const inputEditText = document.createElement("input");
+      inputEditText.type = "text";
+      inputEditText.value = item.text;
+      inputEditText.className = "editNow textNow";
+      inputEditText.addEventListener("change", updateCostText);
+      inputEditText.addEventListener("blur", onCLickDone);
+      wrapText.appendChild(inputEditText);
 
-        const inputEditValue = document.createElement('input');
-        inputEditValue.type = 'number';
-        inputEditValue.value = item.summa;
-        inputEditValue.className = 'editNow valueNow'
-        inputEditValue.addEventListener('change', updateCostValue);
-        inputEditValue.addEventListener('blur', onCLickDone);
-        wrapText.appendChild(inputEditValue);
+      const inputEditValue = document.createElement("input");
+      inputEditValue.type = "number";
+      inputEditValue.value = item.summa;
+      inputEditValue.className = "editNow valueNow";
+      inputEditValue.addEventListener("change", updateCostValue);
+      inputEditValue.addEventListener("blur", onCLickDone);
+      wrapText.appendChild(inputEditValue);
     } else {
-        const text = document.createElement("p");
-        text.innerText = `${index + 1}) ${item.text}`;
-        text.className = "cost-text cost-cost";
-        wrapText.appendChild(text);
+      const text = document.createElement("p");
+      text.innerText = `${index + 1}) ${item.text}`;
+      text.className = "cost-text cost-cost";
+      wrapText.appendChild(text);
 
-        const money = document.createElement("p");
-        money.innerText = item.summa + " р.";
-        money.className = "cost-money cost-cost";
-        wrapText.appendChild(money);
+      const money = document.createElement("p");
+      money.innerText = `${item.summa} р.`;
+      money.className = "cost-money cost-cost";
+      wrapText.appendChild(money);
     }
 
     const wrapBtn = document.createElement("div");
@@ -105,23 +106,22 @@ render = () => {
     container.appendChild(wrapBtn);
 
     if (indexEdit === index) {
-        const imageDone = document.createElement('img');
-        imageDone.src = "images/done.svg";
-        imageDone.className = "cost-btn edit-btn";
-        wrapBtn.appendChild(imageDone);  
-        imageDone.onclick = function () {
-            onCLickDone();
-        }
-
+      const imageDone = document.createElement("img");
+      imageDone.src = "images/done.svg";
+      imageDone.className = "cost-btn edit-btn";
+      wrapBtn.appendChild(imageDone);
+      imageDone.onclick = function () {
+        onCLickDone();
+      };
     } else {
       const imageEdit = document.createElement("img");
       imageEdit.src = "images/pencil.svg";
       imageEdit.className = "cost-btn edit-btn";
       wrapBtn.appendChild(imageEdit);
       imageEdit.onclick = function () {
-          indexEdit = index;
-          render();
-      }
+        indexEdit = index;
+        render();
+      };
     }
 
     const imageDelete = document.createElement("img");
@@ -138,23 +138,24 @@ render = () => {
 
 onClickDelete = (index) => {
   allCosts.splice(index, 1);
+  localStorage.setItem("costs", JSON.stringify(allCosts));
   render();
-  localStorage.setItem('costs', JSON.stringify(allCosts));
+  
 };
 
 updateCostText = (event) => {
-    allCosts[indexEdit].text = event.target.value;
-    render();
-    
-}
+  allCosts[indexEdit].text = event.target.value;
+  render();
+};
 
 updateCostValue = (event) => {
-    allCosts[indexEdit].summa = event.target.value;
-    render();
-}
+  allCosts[indexEdit].summa = event.target.value;
+  render();
+};
 
 onCLickDone = () => {
-    indexEdit = null;
-    render();
-    localStorage.setItem('costs', JSON.stringify(allCosts));
-}
+  indexEdit = null;
+  localStorage.setItem("costs", JSON.stringify(allCosts));
+  render();
+  
+};

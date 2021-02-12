@@ -143,22 +143,22 @@ label {
 
 .wrap-text {
   display: flex;
-    justify-content: space-between;
-    width: 80%;
-    align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  align-items: center;
 }
 
 .cost-cost {
   font-size: 26px;
-    font-weight: 100;
-    letter-spacing: 0.5px;
+  font-weight: 100;
+  letter-spacing: 0.5px;
 }
 
 .wrap-buttons {
   display: flex;
   width: 10%;
-  justify-content: space-between; 
-  align-items: center; 
+  justify-content: space-between;
+  align-items: center;
 }
 
 .editNow {
