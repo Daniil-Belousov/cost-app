@@ -8,6 +8,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  overflow-y: hidden;
 }
 
 .wrap-container {
@@ -123,7 +124,19 @@ label {
 }
 
 #wrap-task-container {
-  padding-top: 5vh;
+  margin-top: 5vh;
+  overflow-y: scroll;
+  height: 45vh;
+}
+
+#wrap-task-container::-webkit-scrollbar { 
+  width: 0; 
+}
+#wrap-task-container { 
+  -ms-overflow-style: none; 
+}
+#wrap-task-container { 
+  overflow: -moz-scrollbars-none; 
 }
 
 .cost-container {
