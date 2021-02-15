@@ -7,11 +7,10 @@ const Schema = mongoose.Schema;
 
 const costSchema = new Schema({
   text: String,
-  summa: Number,
+  summa: Number
 });
 
-const url =
-  "mongodb+srv://dbUser:dbUserPass@firstcluster.as11g.mongodb.net/<dbUserDB>?retryWrites=true&w=majority";
+const url = "mongodb+srv://dbUser:dbUserPass@firstcluster.as11g.mongodb.net/<dbUserDB>?retryWrites=true&w=majority";
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const Cost = mongoose.model("costs", costSchema);
@@ -34,8 +33,8 @@ app.post("/addNewCost", (req, res) => {
 
 app.patch("/editCost", (req, res) => {
   Cost.updateOne({ _id: req.body._id }, req.body).then((result) => {
-    Cost.find({ _id: req.body._id }).then((result2) => {
-      res.send(result2);
+    Cost.find().then((result) => {
+      res.send({ data: result });
     });
   });
 });

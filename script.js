@@ -17,7 +17,6 @@ window.onload = async function init() {
 
     let result = await resp.json();
     allCosts = result.data;
-  localStorage.setItem("costs", JSON.stringify(allCosts));
   render();
 };
 
@@ -33,16 +32,11 @@ onClickButton = async () => {
   if (textI === "" || valueI === null) {
     alert("пожалуйста введите значение!");
   } else {
-    allCosts.push({
-      text: textI,
-      summa: valueI
-    });
-
     const resp = await fetch('http://localhost:8000/addNewCost', {
         method: "POST",
         headers: {
             "Content-Type": 'application/json;charset=utf-8',
-            'Access-Control': '*'
+            'Access-Control-Allow-Origin': '*'
         },
         body: JSON.stringify({
             text: textI,
@@ -50,23 +44,20 @@ onClickButton = async () => {
         })  
     });
     let result = await resp.json();
-    allCosts.push(result.data);
-    console.log(result);
+    allCosts.push(result.result)
     valueI = null;
     textI = "";
     inputText.value = "";
     inputValue.value = null;
-    localStorage.setItem("costs", JSON.stringify(allCosts));
     render();
   }
 };
 
 render = () => {
-    console.log(allCosts);
   total = 0;
-  for (let i = 0; i < allCosts.length; i++) {
-    total = total + Number(allCosts[i].summa);
-  }
+  allCosts.forEach(element => {
+    total = total + element.summa;
+  });
   
   const amount = document.querySelector(".summa");
   amount.innerText = `Итого: ${total} р.`;
@@ -100,6 +91,7 @@ render = () => {
       inputEditValue.className = "editNow valueNow";
       inputEditValue.addEventListener("change", updateCostValue);
       wrapText.appendChild(inputEditValue);
+
     } else {
       const text = document.createElement("p");
       text.innerText = `${index + 1}) ${item.text}`;
@@ -153,17 +145,21 @@ render = () => {
       imageDelete.className = "cost-btn delete-btn";
       wrapBtn.appendChild(imageDelete);
       imageDelete.onclick = function () {
-        onClickDelete(index);
+        onClickDelete(index,item);
       };
     }
     content.appendChild(container);
   });
 };
 
-onClickDelete = (index) => {
-  allCosts.splice(index, 1);
-  localStorage.setItem("costs", JSON.stringify(allCosts));
-  render();
+onClickDelete = async (index,item) => {
+  let _id = allCosts[index]._id;
+  const resp = await fetch(`http://localhost:8000/deleteCost?_id=${_id}`, {
+    method: "DELETE",
+});
+let result = await resp.json();
+allCosts = result.data;
+render();
 };
 
 updateCostText = (event) => {
@@ -174,8 +170,21 @@ updateCostValue = (event) => {
   allCosts[indexEdit].summa = event.target.value;
 };
 
-onCLickDone = () => {
+onCLickDone = async() => {
+  const resp = await fetch('http://localhost:8000/editCost', {
+    method: "PATCH",
+    headers: {
+        "Content-Type": 'application/json;charset=utf-8',
+        'Access-Control-Allow-Origin': '*'
+    },
+    body: JSON.stringify({
+        _id: allCosts[indexEdit]._id,
+        text: allCosts[indexEdit].text,
+        summa: Number(allCosts[indexEdit].summa)
+    })
+});
+let result = await resp.json();
+allCosts[indexEdit] = result.data[indexEdit];
   indexEdit = null;
-  localStorage.setItem("costs", JSON.stringify(allCosts));
   render();
 };
